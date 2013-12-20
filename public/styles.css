@@ -1,0 +1,5 @@
+
+div.invalid {
+  border: solid 1px black;
+  border-color: red;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "bogart-form-warden",
+  "version": "0.1.0",
+  "author": "Nathan Stott",
+  "email": "nrstott@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nrstott/bogart-form-warden"
+  },
+  "dependencies": {
+    "form-warden": "~2.0.4",
+    "bogart": "~0.5.14"
+  },
+  "devDependencies": {
+    "jasmine-node": ">=1.4.0"
+  },
+  "scripts": {
+    "test": "jasmine-node --coffee spec/"
+  }
+}
