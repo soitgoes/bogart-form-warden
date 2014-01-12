@@ -4,6 +4,7 @@ q = bogart.q
 EventEmitter = require('events').EventEmitter
 formWarden = require('form-warden')
 
+
 describe 'Form', ->
 
   it 'should construct', ->
@@ -15,8 +16,7 @@ describe 'Form', ->
     expect(new Form().viewEngine(viewEngine).viewEngine()).toBe(viewEngine)
 
   it 'should set selector', ->
-    selector = {}
-    
+    selector = '.form';
     expect(new Form().selector(selector).selector()).toBe(selector)
   
   it 'should have default selector', ->
@@ -30,6 +30,7 @@ describe 'Form', ->
     next = null
     res = null
     req = null
+    selector = '.someSelector'
 
     beforeEach ->
       validationOptions =
@@ -53,7 +54,7 @@ describe 'Form', ->
         headers:
           accepts: 'text/html'
 
-      form = new Form(validationOptions).viewEngine(viewEngine)
+      form = new Form(validationOptions).viewEngine(viewEngine).selector(selector)
 
       res = form(next)(req)
 
@@ -69,6 +70,13 @@ describe 'Form', ->
       res
         .then ->
           expect(afterRender.mostRecentCall.args[1].locals.formWardenScript).not.toBeUndefined()
+        .fail (err) =>
+          @fail(err)
+        .fin done
+    it 'should include the jquery formwarden call on the formWardenScript local variable', (done) ->
+      res
+        .then ->
+          expect(afterRender.mostRecentCall.args[1].locals.formWardenScript).toContain('$("'+selector+'")')
         .fail (err) =>
           @fail(err)
         .fin done
