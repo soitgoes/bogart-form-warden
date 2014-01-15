@@ -93,8 +93,7 @@ describe 'Form', ->
       next = jasmine.createSpy('next')
       next.andReturn q({ status: 200, body: [], headers: {} })
 
-      form = new Form(validationOptions).viewEngine(viewEngine)
-
+      form = new Form(validationOptions)
       req =
         method: 'post'
         pathInfo: '/'
