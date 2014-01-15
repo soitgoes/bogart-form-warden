@@ -19,6 +19,9 @@
        </fieldset>
      </form>
   <ul class="validation_summary">
+    {{#errors}}
+      {{.}}
+    {{/errors}}
   </ul>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
   {{{formWardenScript}}}

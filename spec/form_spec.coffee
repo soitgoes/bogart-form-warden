@@ -18,7 +18,7 @@ describe 'Form', ->
   it 'should set selector', ->
     selector = '.form';
     expect(new Form().selector(selector).selector()).toBe(selector)
-  
+
   it 'should have default selector', ->
     expect(new Form().selector()).toBe('form')
 
@@ -90,11 +90,10 @@ describe 'Form', ->
 
     beforeEach ->
       spyOn(formWarden, 'validateForm').andReturn({ validForm: true })
-
       next = jasmine.createSpy('next')
       next.andReturn q({ status: 200, body: [], headers: {} })
 
-      form = new Form(validationOptions)
+      form = new Form(validationOptions).viewEngine(viewEngine)
 
       req =
         method: 'post'
@@ -123,3 +122,12 @@ describe 'Form', ->
         .fail (err) =>
           @fail err
         .fin done
+
+    # it 'should respond with 403', (done) ->
+    #   res
+    #     .then ->
+    #       expect(viewEngine.respond).toHaveBeenCalled()
+#    it 'should call respond with errors', (done) ->
+#      res
+#        .then ->
+#          expect(viewEngine.respond).toHaveBeenCalledWith({errors:[]});    
