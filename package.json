@@ -8,7 +8,7 @@
     "url": "https://github.com/nrstott/bogart-form-warden"
   },
   "dependencies": {
-    "form-warden": "~2.0.4",
+    "form-warden": ">2.0.4",
     "bogart": "~0.5.14"
   },
   "devDependencies": {
